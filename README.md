@@ -1,10 +1,6 @@
-<h1 align="center">deno progress</h1>
+# deno progress
 
-<p align="center">
-
-<p align="center">
-<img src="./assets/screenshot.jpg" width="1000"/>
-</p>
+![screenshot](./assets/screenshot.jpg)
 
 ## Usage
 
@@ -16,10 +12,10 @@ import Progressbar from "https://deno.land/x/deno_progress@<version>/mod.ts";
 
 const bar = new Progressbar("|:bar|", { total: 100, width: 50 });
 const id = setInterval(() => {
-  bar.tick(2);
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(2);
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 100);
 ```
 
@@ -68,8 +64,8 @@ const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
 
 const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
 bar.tick({
-  token1: "Hello",
-  token2: "World!\n",
+	token1: "Hello",
+	token2: "World!\n",
 });
 ```
 
@@ -81,22 +77,24 @@ The above example would result in the result output below:
 
 ## Examples
 
-a simple eample
+a simple example
 
 ```ts
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 
 const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
-  total: 100,
+	total: 100,
 });
 
 const id = setInterval(() => {
-  bar.tick(1, { title: "progress " });
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(1, { title: "progress " });
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 50);
 ```
+
+More examples can be found on the example folder
 
 ## Credits
 
