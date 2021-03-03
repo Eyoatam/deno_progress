@@ -1,6 +1,6 @@
 # deno progress
 
-![screenshot](./assets/screenshot.jpg)
+![screenshot](./assets/screenshot.png)
 
 ## Usage
 
