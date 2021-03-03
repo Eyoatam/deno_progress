@@ -14,33 +14,24 @@ interface BarOptions {
 /**
  * Initialize a `Progressbar` with the given `fmt` string and `options`
  *
- * Options:
+ * Example
  *
- *   - `curr` current completed index
- *   - `total` total number of ticks to complete
- *   - `width` the displayed width of the progress bar defaulting to total
- *   - `head` head character defaulting to complete character
- *   - `complete` completion character defaulting to "█"
- *   - `incomplete` incomplete character defaulting to "░"
- *   - `renderThrottle` minimum time between updates in milliseconds defaulting to 16
- *   - `callback` optional function to call when the progress bar completes
- *   - `clear` will clear the progress bar upon termination
+ * ```ts
+ * import { Progressbar } from "../src/progress.ts";
  *
- * Mehods:
- *   - `tick` tick the progress bar with the given `length` and optional `tokens`
- *   - `render` render the progress bar with optional `tokens` and optional `force`
- *   - `interrupt` interrupt the progress bar and write a message above it.
- *   - `terminate` terminates the progress bar
+ * const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
+ *   total: 100,
+ *});
  *
- * Tokens:
+ *const id = setInterval(() => {
+ *  bar.tick(1, { title: "progress " });
  *
- *   - `:bar` the progress bar itself
- *   - `:current` current tick number
- *   - `:total` total ticks
- *   - `:elapsed` time elapsed in seconds
- *   - `:percent` completion percentage
- *   - `:eta` eta in seconds
- *   - `:rate` rate of ticks per second
+ * if (bar.complete === true) {
+ *    clearInterval(id);
+ *  }
+ *}, 50);
+ *
+ * ```
  *
  * @param fmt @type {string}
  * @param options @type {object|number}
@@ -72,9 +63,10 @@ export class Progressbar {
     this.complete = options.complete ? options.complete : "█";
     this.incomplete = options.incomplete ? options.incomplete : "░";
     this.head = options.head ? options.head : this.complete;
-    this.renderThrottle = options.renderThrottle && options.renderThrottle !== 0
-      ? options.renderThrottle
-      : 0;
+    this.renderThrottle =
+      options.renderThrottle && options.renderThrottle !== 0
+        ? options.renderThrottle
+        : 0;
     this.#lastRender = -Infinity;
     this.callback = options.callback ?? function () {};
     this.tokens = {};
@@ -92,7 +84,7 @@ export class Progressbar {
 
   tick(
     length: number | Record<string, string>,
-    tokens?: Record<string, string>,
+    tokens?: Record<string, string>
   ) {
     // set length to one if the length passed is equal to 0
     length && length === 0 ? (length = 1) : length;
@@ -162,7 +154,7 @@ export class Progressbar {
       .replace(":elapsed", isNaN(elapsed) ? "0.0" : (elapsed / 1000).toFixed(1))
       .replace(
         ":eta",
-        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1000).toFixed(1),
+        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1000).toFixed(1)
       )
       .replace(":percent", percent.toFixed(0) + "%")
       .replace(":rate", Math.round(rate) + "");
@@ -177,15 +169,15 @@ export class Progressbar {
 
     const width = Math.min(
       this.width ? this.width : this.total,
-      availableSpace,
+      availableSpace
     );
 
     const completeLength = Math.round(width * ratio);
     let complete = Array(Math.max(0, completeLength + 1)).join(
-      typeof this.complete === "string" ? this.complete : "",
+      typeof this.complete === "string" ? this.complete : ""
     );
     const incomplete = Array(Math.max(0, width - completeLength + 1)).join(
-      typeof this.incomplete === "string" ? this.incomplete : "",
+      typeof this.incomplete === "string" ? this.incomplete : ""
     );
 
     /* add head to the complete string */
