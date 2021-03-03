@@ -61,8 +61,6 @@ object parameter to `tick()` method
 ```ts
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
-
-const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
 bar.tick({
 	token1: "Hello",
 	token2: "World!\n",
