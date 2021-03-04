@@ -1,3 +1,5 @@
+import { sprintf } from "https://deno.land/std@0.89.0/fmt/printf.ts";
+
 interface BarOptions {
   total: number;
   curr?: number;
@@ -63,10 +65,9 @@ export class Progressbar {
     this.complete = options.complete ? options.complete : "█";
     this.incomplete = options.incomplete ? options.incomplete : "░";
     this.head = options.head ? options.head : this.complete;
-    this.renderThrottle =
-      options.renderThrottle && options.renderThrottle !== 0
-        ? options.renderThrottle
-        : 0;
+    this.renderThrottle = options.renderThrottle && options.renderThrottle !== 0
+      ? options.renderThrottle
+      : 0;
     this.#lastRender = -Infinity;
     this.callback = options.callback ?? function () {};
     this.tokens = {};
@@ -77,14 +78,14 @@ export class Progressbar {
   /**
    * "tick" the progress bar with `length` and optional `tokens`.
    *
-   * @param len @type {number|object}
+   * @param length @type {number|object}
    * @param tokens @type {object}
    * @api public
    */
 
   tick(
     length: number | Record<string, string>,
-    tokens?: Record<string, string>
+    tokens?: Record<string, string>,
   ) {
     // set length to one if the length passed is equal to 0
     length && length === 0 ? (length = 1) : length;
@@ -154,7 +155,7 @@ export class Progressbar {
       .replace(":elapsed", isNaN(elapsed) ? "0.0" : (elapsed / 1000).toFixed(1))
       .replace(
         ":eta",
-        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1000).toFixed(1)
+        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1000).toFixed(1),
       )
       .replace(":percent", percent.toFixed(0) + "%")
       .replace(":rate", Math.round(rate) + "");
@@ -169,15 +170,15 @@ export class Progressbar {
 
     const width = Math.min(
       this.width ? this.width : this.total,
-      availableSpace
+      availableSpace,
     );
 
     const completeLength = Math.round(width * ratio);
     let complete = Array(Math.max(0, completeLength + 1)).join(
-      typeof this.complete === "string" ? this.complete : ""
+      typeof this.complete === "string" ? this.complete : "",
     );
     const incomplete = Array(Math.max(0, width - completeLength + 1)).join(
-      typeof this.incomplete === "string" ? this.incomplete : ""
+      typeof this.incomplete === "string" ? this.incomplete : "",
     );
 
     /* add head to the complete string */
