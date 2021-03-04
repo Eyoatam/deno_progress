@@ -38,4 +38,3 @@ jobs:
         run: deno fmt
       - name: Lint
         run: deno lint --unstable
-        run: deno test -A --unstable
