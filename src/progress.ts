@@ -80,7 +80,6 @@ export class Progressbar {
    *
    * @param length @type {number|object}
    * @param tokens @type {object}
-   * @api public
    */
 
   tick(
