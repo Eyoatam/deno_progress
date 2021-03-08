@@ -8,7 +8,7 @@ First we create a Progressbar, giving it a `fmt` string and options || total,
 <br> telling it when it will be considered complete. then we will do `tick()`
 
 ```ts
-import Progressbar from "https://deno.land/x/deno_progress@<version>/mod.ts";
+import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 
 const bar = new Progressbar("|:bar|", { total: 100, width: 50 });
 const id = setInterval(() => {
