@@ -1,5 +1,3 @@
-import { sprintf } from "https://deno.land/std@0.89.0/fmt/printf.ts";
-
 interface BarOptions {
   total: number;
   curr?: number;
