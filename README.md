@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fx%2Fdeno_progress%2Fmod.ts">
 <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fdeno_progress%2Fmod.ts">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg">
-<img src="https://img.shields.io/badge/deno-^1.5.0-informational?logo=deno"> 
+<img src="https://img.shields.io/badge/deno-^1.5.0-informational?logo=deno">
 </p>
 
 ## Usage
