@@ -30,15 +30,17 @@ const id = setInterval(() => {
 
 ## Options
 
-- `curr` current completed index
-- `total` total number of ticks to complete
-- `width` the displayed width of the progress bar defaulting to total
-- `head` head character defaulting to complete character
-- `complete` completion character defaulting to "█"
-- `incomplete` incomplete character defaulting to "░"
-- `renderThrottle` minimum time between updates in milliseconds defaulting to 16
-- `callback` optional function to call when the progress bar completes
-- `clear` will clear the progress bar upon termination
+| name             | description                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| `curr`           | current completed index                                       |
+| `total`          | total number of ticks to complete                             |
+| `width`          | the displayed width of the progress bar defaulting to total   |
+| `head`           | head character defaulting to complete character               |
+| `complete`       | completion character defaulting to "█"                        |
+| `incomplete`     | incomplete character defaulting to "░"                        |
+| `renderThrottle` | minimum time between updates in milliseconds defaulting to 16 |
+| `callback`       | optional function to call when the progress bar completes     |
+| `clear`          | will clear the progress bar upon termination                  |
 
 ## Mehods:
 
@@ -49,13 +51,33 @@ const id = setInterval(() => {
 
 ## Tokens:
 
-- `:bar` the progress bar itself
-- `:current` current tick number
-- `:total` total ticks
-- `:elapsed` time elapsed in seconds
-- `:percent` completion percentage
-- `:eta` eta in seconds
-- `:rate` rate of ticks per second
+| name       | description                          |
+| ---------- | ------------------------------------ |
+| `:bar`     | the progress bar itself              |
+| `:current` | current tick number                  |
+| `:total`   | total ticks                          |
+| `:elapsed` | time elapsed in seconds              |
+| `:percent` | completion percentage                |
+| `:eta`     | estimated time of arrival in seconds |
+| `:rate`    | rate of ticks per second             |
+
+## Methods
+
+### `tick(length, tokens)`
+
+tick the progress bar with the given `length` and optional `tokens`
+
+### `render(force, tokens)`
+
+render the progress bar with optional `tokens` and optional `force`
+
+### `interrupt(msg)`
+
+interrupt the progress bar and write a message above it.
+
+### `terminate()`
+
+terminate the progress bar
 
 ## Custom Tokens
 
