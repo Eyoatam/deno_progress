@@ -21,10 +21,10 @@ import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts"
 
 const bar = new Progressbar("|:bar|", { total: 100, width: 50 });
 const id = setInterval(() => {
-  bar.tick(2);
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(2);
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 100);
 ```
 
@@ -41,13 +41,6 @@ const id = setInterval(() => {
 | `renderThrottle` | minimum time between updates in milliseconds defaulting to 16 |
 | `callback`       | optional function to call when the progress bar completes     |
 | `clear`          | will clear the progress bar upon termination                  |
-
-## Mehods:
-
-- `tick` tick the progress bar with the given `length` and optional `tokens`
-- `render` render the progress bar with optional `tokens` and optional `force`
-- `interrupt` interrupt the progress bar and write a message above it.
-- `terminate` terminates the progress bar
 
 ## Tokens:
 
@@ -93,8 +86,8 @@ object parameter to `tick()` method
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
 bar.tick({
-  token1: "Hello",
-  token2: "World!\n",
+	token1: "Hello",
+	token2: "World!\n",
 });
 ```
 
@@ -112,14 +105,14 @@ a simple example
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 
 const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
-  total: 100,
+	total: 100,
 });
 
 const id = setInterval(() => {
-  bar.tick(1, { title: "progress " });
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(1, { title: "progress " });
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 50);
 ```
 
