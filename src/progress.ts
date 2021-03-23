@@ -1,4 +1,4 @@
-interface BarOptions {
+export interface BarOptions {
   total: number;
   curr?: number;
   width?: number;
@@ -191,7 +191,7 @@ export class Progressbar {
     }
 
     if (this.#lastDraw !== str) {
-      this.moveCursor();
+      // this.moveCursor();
       console.clear();
       this.write(str);
       this.#lastDraw = str;
@@ -204,7 +204,7 @@ export class Progressbar {
    */
   interrupt(msg: string): void {
     // clear the current line
-    this.write("\x1b[1K");
+    console.clear();
     // move the cursor to the start of the line
     this.moveCursor();
     // write the message text
