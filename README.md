@@ -76,8 +76,8 @@ terminate the progress bar
 
 You can define custom tokens by adding
 
-```json
-{ "name": value }
+```js
+{ name: "value" }
 ```
 
 object parameter to `tick()` method
