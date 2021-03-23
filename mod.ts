@@ -1,1 +1,1 @@
-export { Progressbar } from "./src/progress.ts";
+export * from "./src/progress.ts";
