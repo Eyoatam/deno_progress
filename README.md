@@ -76,11 +76,8 @@ terminate the progress bar
 
 You can define custom tokens by adding
 
-```js
-{
-  name:
-  "value";
-}
+```jsonc
+{ name: "value" };
 ```
 
 object parameter to `tick()` method
