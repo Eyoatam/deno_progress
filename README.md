@@ -118,6 +118,18 @@ const id = setInterval(() => {
 
 More examples can be found on the example folder
 
+## Contributing
+
+Give your pr a descriptive title
+
+examples:
+
+- feat: add a new feature
+- fix(render): fix render method
+
+For further information you can read the
+[Contribiting guidelines](https://github.com/Eyoatam/deno_progress/blob/main/CONTRIBUTING.md)
+
 ## Credits
 
 Ported from [node-progress](https://github.com/visionmedia/node-progress).
