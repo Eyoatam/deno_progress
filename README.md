@@ -4,7 +4,7 @@
 
 <p align="center">
 <img src="https://github.com/Eyoatam/deno_progress/workflows/ci/badge.svg">
-<a href="https://doc.deno.land/https/deno.land/x/deno_progress/mod.ts"><img src="https://doc.deno.land/badge.svg"></a>
+<a href="https://doc.deno.land/https/deno.land/x/deno_progress/typedef/progress.d.ts"><img src="https://doc.deno.land/badge.svg"></a>
 <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fx%2Fdeno_progress%2Fmod.ts">
 <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Flatest-version%2Fx%2Fdeno_progress%2Fmod.ts">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg">
@@ -21,10 +21,10 @@ import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts"
 
 const bar = new Progressbar("|:bar|", { total: 100, width: 50 });
 const id = setInterval(() => {
-  bar.tick(2);
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(2);
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 100);
 ```
 
@@ -86,8 +86,8 @@ object parameter to `tick()` method
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 const bar = new Progressbar(":current: :token1 :token2", { total: 3 });
 bar.tick({
-  token1: "Hello",
-  token2: "World!\n",
+	token1: "Hello",
+	token2: "World!\n",
 });
 ```
 
@@ -105,14 +105,14 @@ a simple example
 import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
 
 const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
-  total: 100,
+	total: 100,
 });
 
 const id = setInterval(() => {
-  bar.tick(1, { title: "progress " });
-  if (bar.complete === true) {
-    clearInterval(id);
-  }
+	bar.tick(1, { title: "progress " });
+	if (bar.complete === true) {
+		clearInterval(id);
+	}
 }, 50);
 ```
 
