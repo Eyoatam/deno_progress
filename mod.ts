@@ -1,1 +1,1 @@
-export * from "./src/progress.ts";
+export * from "./typedef/progress.d.ts";
