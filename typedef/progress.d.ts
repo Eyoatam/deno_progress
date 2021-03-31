@@ -59,7 +59,7 @@ export declare class Progressbar {
    */
   tick(
     length: number | Record<string, string>,
-    tokens?: Record<string, string>
+    tokens?: Record<string, string>,
   ): void;
   /**
    * render the progress bar with optional `tokens` and optional `force`
