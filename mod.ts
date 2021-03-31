@@ -1,1 +1,1 @@
-export * from "./typedef/progress.d.ts";
+export { Progressbar } from "./src/progress.ts";
