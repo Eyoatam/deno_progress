@@ -1,6 +1,6 @@
 // deno-lint-ignore-file
 
-export interface BarOptions {
+interface BarOptions {
   total: number;
   curr?: number;
   width?: number;
@@ -33,10 +33,10 @@ export interface BarOptions {
  *
  * ```
  *
- * @param fmt
- * @param options
+ * @param fmt - format string
+ * @param options - format string
  */
-export declare class Progressbar {
+declare class Progressbar {
   #private;
   fmt: string;
   total: number;
@@ -84,7 +84,4 @@ export declare class Progressbar {
    * "terminate" the progress bar
    */
   terminate(): void;
-  private moveCursor;
-  private write;
-  private clearProgress;
 }

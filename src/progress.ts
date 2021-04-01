@@ -33,8 +33,8 @@ export interface BarOptions {
  *
  * ```
  *
- * @param {string} fmt
- * @param {object|number} options
+ * @param fmt - format string
+ * @param options - format string
  */
 
 export class Progressbar {
@@ -76,8 +76,8 @@ export class Progressbar {
   /**
    * "tick" the progress bar with `length` and optional `tokens`.
    *
-   * @param {number|object} length
-   * @param {object} tokens
+   * @param length
+   * @param tokens
    */
 
   tick(
@@ -114,8 +114,8 @@ export class Progressbar {
    * render the progress bar with optional `tokens` and optional `force`
    * to place in the progress bar's `fmt` field.
    *
-   * @param {object} tokens
-   * @param {boolean} force
+   * @param tokens
+   * @param force
    */
 
   render(force?: boolean, tokens?: Record<string, string>) {
@@ -200,7 +200,7 @@ export class Progressbar {
 
   /**
    * "interrupt" the progress bar and write a message above it.
-   * @param {string} message The message to write.
+   * @param message The message to write.
    */
   interrupt(msg: string): void {
     // clear the current line
@@ -217,8 +217,8 @@ export class Progressbar {
 
   /**
    * "update" the progress bar to represent an exact percentage.
-   * @param {number} ratio
-   * @param {number} tokens
+   * @param ratio
+   * @param tokens
    */
 
   update(ratio: number, tokens: Record<string, string>) {
