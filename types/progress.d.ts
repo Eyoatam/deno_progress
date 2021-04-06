@@ -9,7 +9,7 @@ interface BarOptions {
   incomplete?: string;
   head?: string;
   renderThrottle?: number;
-  callback?: any;
+  callback?: (arg: any) => any;
 }
 /**
  * Initialize a `Progressbar` with the given `fmt` string and `options`
@@ -47,9 +47,9 @@ declare class Progressbar {
   incomplete?: string | boolean;
   renderThrottle?: number;
   head?: string;
-  callback?: any;
   tokens: Record<string, string>;
   start: Date | number;
+  callback?: (arg: any) => any;
   constructor(fmt: string, options: BarOptions);
   /**
    * "tick" the progress bar with `length` and optional `tokens`.

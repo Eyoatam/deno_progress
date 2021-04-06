@@ -8,7 +8,7 @@ export interface BarOptions {
   head?: string;
   renderThrottle?: number;
   // deno-lint-ignore no-explicit-any
-  callback?: any;
+  callback?: (arg: any) => any;
 }
 
 /**
@@ -50,7 +50,7 @@ export class Progressbar {
   renderThrottle?: number;
   head?: string;
   // deno-lint-ignore no-explicit-any
-  callback?: any;
+  callback?: (arg: any) => any;
   tokens: Record<string, string>;
   start: Date | number;
 
@@ -105,7 +105,7 @@ export class Progressbar {
       this.render(false, undefined);
       this.complete = true;
       this.terminate();
-      this.callback(this);
+      this.callback ? this.callback(this) : null;
       return;
     }
   }
