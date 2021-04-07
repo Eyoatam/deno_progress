@@ -14,10 +14,10 @@ interface BarOptions {
 /**
  * Initialize a `Progressbar` with the given `fmt` string and `options`
  *
- * Example
+ * Example: render a simple ProgressBar
  *
  * ```ts
- * import { Progressbar } from "../src/progress.ts";
+ * import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
  *
  * const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
  *  total: 100,
