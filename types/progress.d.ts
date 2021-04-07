@@ -37,7 +37,6 @@ interface BarOptions {
  * @param options - format string
  */
 declare class Progressbar {
-  #private;
   fmt: string;
   total: number;
   curr: number;
