@@ -8,9 +8,9 @@ const bar = new Progressbar("  |:bar|", {
   width: 50,
 });
 
-const id = setInterval(() => {
+const _id = setInterval(() => {
   bar.tick(2);
   if (bar.complete === true) {
-    clearInterval(id);
+    clearInterval(_id);
   }
 }, 50);

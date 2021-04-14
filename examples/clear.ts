@@ -5,9 +5,9 @@ const bar = new Progressbar("  |:bar| :percent", {
   clear: true,
 });
 
-const id = setInterval(() => {
+const _id = setInterval(() => {
   bar.tick(6);
   if (bar.complete === true) {
-    clearInterval(id);
+    clearInterval(_id);
   }
 }, 500);

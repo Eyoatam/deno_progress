@@ -7,9 +7,9 @@ const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
   incomplete: "-",
 });
 
-const id = setInterval(() => {
+const _id = setInterval(() => {
   bar.tick(1, { title: "progress " });
   if (bar.complete === true) {
-    clearInterval(id);
+    clearInterval(_id);
   }
 }, 50);
