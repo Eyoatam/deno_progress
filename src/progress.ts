@@ -43,14 +43,14 @@ export class Progressbar {
   #lastRender: number;
   total: number;
   curr: number;
-  width?: number;
-  clear?: boolean;
-  complete?: string | boolean;
-  incomplete?: string | boolean;
-  renderThrottle?: number;
-  head?: string;
+  width: number;
+  clear: boolean;
+  complete: string | boolean;
+  incomplete: string | boolean;
+  renderThrottle: number;
+  head: string;
   // deno-lint-ignore no-explicit-any
-  callback?: (arg: any) => any;
+  callback: (arg: any) => any;
   tokens: Record<string, string>;
   start: Date | number;
 
@@ -88,11 +88,17 @@ export class Progressbar {
     length && length === 0 ? (length = 1) : length;
 
     // swap len and tokens
-    if ("object" == typeof length) (tokens = length), (length = 1);
-    if (tokens) this.tokens = tokens;
+    if ("object" == typeof length) {
+      (tokens = length), (length = 1);
+    }
+    if (tokens) {
+      this.tokens = tokens;
+    }
 
     // start time for estimated tim eof arrival
-    if (0 == this.curr) this.start = new Date();
+    if (0 == this.curr) {
+      this.start = new Date();
+    }
     this.curr += length;
 
     // render the progress bar
@@ -126,7 +132,9 @@ export class Progressbar {
     }
 
     const isTTY = Deno.isatty(Deno.stderr.rid);
-    if (!isTTY) return;
+    if (!isTTY) {
+      return;
+    }
 
     const now = Date.now();
     const delta = now - this.#lastRender;
@@ -143,21 +151,24 @@ export class Progressbar {
     const date = new Date();
     const elapsed = +date - +this.start;
     const eta = percent == 100 ? 0 : elapsed * (this.total / this.curr - 1);
-    const rate = this.curr / (elapsed / 1000);
+    const rate = this.curr / (elapsed / 1_000);
 
-    /** populate progress bar with tokens, percentages and timestamps */
+    /** populate progress bar with tokens, percentages and timestamps*/
     let str = this.fmt
-      .replace(":current", this.curr + "")
-      .replace(":total", this.total + "")
-      .replace(":elapsed", isNaN(elapsed) ? "0.0" : (elapsed / 1000).toFixed(1))
+      .replace(":current", `${this.curr}`)
+      .replace(":total", `${this.total}`)
+      .replace(
+        ":elapsed",
+        isNaN(elapsed) ? "0.0" : (elapsed / 1_000).toFixed(1),
+      )
       .replace(
         ":eta",
-        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1000).toFixed(1),
+        isNaN(eta) || !isFinite(eta) ? "0.0" : (eta / 1_000).toFixed(1),
       )
-      .replace(":percent", percent.toFixed(0) + "%")
-      .replace(":rate", Math.round(rate) + "");
+      .replace(":percent", `${percent.toFixed(0)}%`)
+      .replace(":rate", `${Math.round(rate)}`);
 
-    /** calculate available space for the bar */
+    /** calculate available space for the bar*/
     let availableSpace = Math.max(0, 100 - str.replace(":bar", "").length);
 
     const isWindows = Deno.build.os === "windows";
@@ -179,14 +190,16 @@ export class Progressbar {
     );
 
     /* add head to the complete string */
-    if (completeLength > 0) complete = complete.slice(0, -1) + this.head;
+    if (completeLength > 0) {
+      complete = complete.slice(0, -1) + this.head;
+    }
 
     /* fill in the actual progress bar */
     str = str.replace(":bar", complete + incomplete);
 
     if (this.tokens) {
       for (const key in this.tokens) {
-        str = str.replace(":" + key, this.tokens[key]);
+        str = str.replace(`:${key}`, this.tokens[key]);
       }
     }
 
