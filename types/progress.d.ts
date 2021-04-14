@@ -14,22 +14,22 @@ interface BarOptions {
 /**
  * Initialize a `Progressbar` with the given `fmt` string and `options`
  *
- * Example
+ * Example: render a simple ProgressBar
  *
  * ```ts
- * import { Progressbar } from "../src/progress.ts";
+ * import { Progressbar } from "https://deno.land/x/deno_progress@<version>/mod.ts";
  *
- *const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
+ * const bar = new Progressbar("  :title |:bar| eta: :eta :percent", {
  *  total: 100,
- *});
+ * });
  *
- *const id = setInterval(() => {
+ * const id = setInterval(() => {
  *  bar.tick(1, { title: "progress " });
  *
  *  if (bar.complete === true) {
  *    clearInterval(id);
  *  }
- *}, 50);
+ * }, 50);
  *
  * ```
  *
@@ -37,7 +37,6 @@ interface BarOptions {
  * @param options - format string
  */
 declare class Progressbar {
-  #private;
   fmt: string;
   total: number;
   curr: number;
