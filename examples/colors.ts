@@ -1,5 +1,5 @@
 import { Progressbar } from "../src/progress.ts";
-import { green, white } from "https://deno.land/std@0.91.0/fmt/colors.ts";
+import { green, white } from "https://deno.land/std@0.93.0/fmt/colors.ts";
 
 const bar = new Progressbar("  |:bar|", {
   complete: green("█"),
